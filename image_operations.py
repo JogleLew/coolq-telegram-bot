@@ -1,10 +1,14 @@
-from PIL import Image
 import os
-from utils import CQ_IMAGE_ROOT, error
-from configparser import ConfigParser
 import threading
-from urllib.request import urlretrieve
 import traceback
+
+from PIL            import Image
+from utils          import CQ_IMAGE_ROOT, error
+from configparser   import ConfigParser
+from urllib.request import urlretrieve
+
+from short_url    import *
+from bot_constant import *
 
 def create_jpg_image(path, name):
     ## convert Telegram webp image to jpg image
@@ -41,7 +45,7 @@ def qq_download_pic(filename):
         error(filename)
         traceback.print_exc()
 
-def tg_get_pic_url(file_id, pic_type):
+def tg_get_pic_url(tg_bot, file_id, pic_type):
     ## download image from Telegram Server, and generate new image link that send to QQ group
     file_path = tg_bot.getFile(file_id)
     urlretrieve('https://api.telegram.org/file/bot' + tg_token + "/" + file_path[u'file_path'], os.path.join(CQ_IMAGE_ROOT, file_id))

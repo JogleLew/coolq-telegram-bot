@@ -100,7 +100,7 @@ def tg_msg_receive(msg):
     ### photo message
     elif u'photo' in msg:
         fileId = msg[u'photo'][-1][u'file_id']
-        pic_url = tg_get_pic_url(fileId, 'jpg')
+        pic_url = tg_get_pic_url(tg_bot, fileId, 'jpg')
         text = u'[图片, 请点击查看' + pic_url + u']'
 
     ### video message (show placeholder)
@@ -122,7 +122,7 @@ def tg_msg_receive(msg):
 
         #### check sticker link mode
         if sticker_link_modes[forward_index] == 1:
-            pic_url = tg_get_pic_url(file_id, 'png')
+            pic_url = tg_get_pic_url(tg_bot, file_id, 'png')
             text = u'[' + msg[u'sticker'][u'emoji'] + ' sticker, 请点击查看' + pic_url + u']'
     
     ## add picture caption to text

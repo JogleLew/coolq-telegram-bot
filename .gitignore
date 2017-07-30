@@ -95,9 +95,10 @@ ENV/
 # Rope project settings
 .ropeproject
 
-namelist.json
-admin.json
 bot_constant.py
+bot.log
+nohup.out
+namelist.json
 special_sticker_list.py
 
 .DS_Store
