@@ -158,7 +158,14 @@ def tg_msg_receive(msg):
                 reply_sender += " " +  msg[u'reply_to_message'][u'from'][u'last_name']
             replyTo =  u' (reply to ' + reply_sender + u') '
             if msg[u'reply_to_message'][u'from'][u'id'] == tg_bot_id:
-                replyTo =  u' (reply to ' + msg[u'reply_to_message'][u'text'].split(":")[0]  + u') '
+                reply_msg_text = ''
+                if (u'photo' in msg[u'reply_to_message'] or u'document' in msg[u'reply_to_message']) and u'caption' in msg[u'reply_to_message']:
+                    reply_msg_text = msg[u'reply_to_message'][u'caption']
+                elif u'text' in msg[u'reply_to_message']:
+                    reply_msg_text = msg[u'reply_to_message'][u'text']
+                
+                if reply_msg_text.find(':') > 0: 
+                    replyTo =  u' (reply to ' + reply_msg_text.split(":")[0]  + u') '
 
         ## replace emoji to CQ:emoji
         for i in range(8986, 12287):
