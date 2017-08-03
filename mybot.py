@@ -209,7 +209,9 @@ def new(message):
     ## get Telegram group to forward message
     qq_group_id = int(message.group)
     _, tg_group_id, forward_index= get_forward_info(qq_group_id, 0)
-    
+    if forward_index == -1:
+        return
+
     ## get reflect of this QQ group member
     name_list = qq_name_lists[forward_index]
 
