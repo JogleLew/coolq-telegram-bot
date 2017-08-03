@@ -1,3 +1,5 @@
+**[DEPRECATED] 这个仓库将不再维护，请移步[jqqqqqqqqqq/coolq-telegram-bot](https://github.com/jqqqqqqqqqq/coolq-telegram-bot)**
+
 # coolq-telegram-bot
 
 QQ和Telegram的消息互转机器人
